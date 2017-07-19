@@ -1,0 +1,24 @@
+{
+  "name": "FCMPlugin",
+  "version": "1.0.0",
+  "description": "Cordova Plugin Assignment",
+  "cordova": {
+    "id": "com-android-fcm-plugins",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kalluruvenu"
+  },
+  "keywords": [
+    "FCM",
+    "plugin",
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Venu Kalluru",
+  "license": "JNTU"
+}
