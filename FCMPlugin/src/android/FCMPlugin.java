@@ -48,7 +48,7 @@
                  notificationCallBackReady = true;
                  cordova.getActivity().runOnUiThread(new Runnable() {
                      public void run() {
-                      if(lastPush != null) FCMPlugin.sendPushPayload( lastPush );
+                      if(lastPush != null) FCMPlugin.setData(lastPush);
                       lastPush = null;
                       callbackContext.success();
                   }
@@ -68,10 +68,10 @@
     {
 
       try {
-        String callBack = "javascript:" + tokenRefreshCallBack + "('" + token + "')";
+        String callBack = tokenRefreshCallBack + "('" + token + "')";
         gWebView.sendJavascript(callBack);
     } catch (Exception e) {
-        Log.d(TAG,"ERROR sendRefreshToken:" , e.getMessage());
+        Log.d(TAG,"ERROR:" , e.getMessage());
     }
 }
 
@@ -82,14 +82,14 @@ public static void setData(Map<String, Object> payload)
         for (String key : payload.keySet()) {
             jo.put(key, payload.get(key));
         }
-        String callBack = "javascript:" + notificationCallBack + "(" + jo.toString() + ")";
+        String callBack = notificationCallBack + "(" + jo.toString() + ")";
         if(notificationCallBackReady && gWebView != null){
             gWebView.sendJavascript(callBack);
         }else {
             lastPush = payload;
         }
     } catch (Exception e) {
-        Log.d(TAG, "\tERROR sendPushToView. SAVED NOTIFICATION: " + e.getMessage());
+        Log.d(TAG, "\tERROR: " + e.getMessage());
         lastPush = payload;
     }
 
